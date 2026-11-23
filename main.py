@@ -90,3 +90,6 @@ def trip_overview(trip_price, distance, package):
             print("-----------------------------------------------------")
 
 main()
+
+# TODO Improve user experience.
+# TODO Add comments to code + improve visualization.
