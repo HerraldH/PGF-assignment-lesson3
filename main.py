@@ -36,7 +36,7 @@ def choose_package():
         elif program_choice == "3":
             return "Uber X", uber_x
         else:
-            print("Error (Invalid user input),")
+            print("[~~Error, [Invalid user input]]")
 
 def calculate_price(package, km_price):
     """
@@ -47,15 +47,12 @@ def calculate_price(package, km_price):
     :return: Returns the distance the user wishes to travel and the price of the trip based on the distance and chosen package.
     """
 
-    print(" ")
-    print(" ")
-    print(" ")
     print("-----------------------------------------------------")
     print(f"You have chosen the {package} package.")
     print(f"The price per kilometer is €{km_price:.2f}.")
+    print("-----------------------------------------------------")
+    print("The maximum distance is 250 kilometers.")
     while True:
-        print("-----------------------------------------------------")
-        print("The maximum distance is 250 kilometers.")
         distance = input("How many kilometers do you wish to travel: ")
         is_digit = False
         while is_digit == False:
@@ -63,14 +60,18 @@ def calculate_price(package, km_price):
                 distance = float(distance)
                 is_digit = True
             else:
-                print("Error (Invalid user input),")
+                print("~~Error (Invalid user input),")
                 print("-----------------------------------------------------")
                 distance = input("How many kilometers do you wish to travel: ")
 
-        if distance < 1:
-            print("Error [Invalid user input],")
+        if distance < 0.1:
+            print("~~Error [Invalid user input],")
+            print("-----------------------------------------------------")
+            print("The minimum distance is 1 kilometers.")
         elif distance > 250:
-            print("Error [Too great of a distance],")
+            print("~~Error [Too great of a distance],")
+            print("-----------------------------------------------------")
+            print("The maximum distance is 250 kilometers.")
         elif distance < 251:
             trip_price = distance * km_price
             return trip_price, distance
@@ -84,10 +85,7 @@ def trip_overview(trip_price, distance, package):
     :param package: The package the user has chosen.
     :return: Exits the function so the program can end.
     """
-        
-    print(" ")
-    print(" ")
-    print(" ")
+
     print("-----------------------------------------------------")
     print(f"A trip of {distance:.1f} km with the {package} package will cost €{trip_price:.2f}.")
     print("Do you wish to continue?")
@@ -97,27 +95,23 @@ def trip_overview(trip_price, distance, package):
         trip_confirmation = input("[Type 'y' for Yes] & [Type 'n' for no]: ")
         trip_confirmation = trip_confirmation.lower()
         if trip_confirmation == "yes" or trip_confirmation == "y":
-            print(" ")
-            print(" ")
-            print(" ")
             print("-----------------------------------------------------")
             print("You will arrive at your destination shortly.")
             print("Have a nice trip.")
+            print("-----------------------------------------------------")
             return
         elif trip_confirmation == "no" or trip_confirmation == "n":
-            print(" ")
-            print(" ")
-            print(" ")
             print("-----------------------------------------------------")
             print("Uber ride cancelled.")
             print("Have a nice day.")
+            print("-----------------------------------------------------")
             return
         else:
             print("-----------------------------------------------------")
-            print("Error [Invalid user input],")
+            print("~~Error [Invalid user input],")
             print("-----------------------------------------------------")
 
 main()
 
-# TODO Improve user experience.
+# TODO Improve user experience. --> make all error messages consistent.
 # TODO Add comments to code + improve visualization.
