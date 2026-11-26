@@ -1,4 +1,3 @@
-
 def main():
     """
     The main function houses the other functions that will be called throughout the program.
@@ -60,16 +59,16 @@ def calculate_price(package, km_price):
                 distance = float(distance)
                 is_digit = True
             else:
-                print("~~Error (Invalid user input),")
+                print("[~~Error, [Invalid user input]]")
                 print("-----------------------------------------------------")
                 distance = input("How many kilometers do you wish to travel: ")
 
         if distance < 0.1:
-            print("~~Error [Invalid user input],")
+            print("[~~Error, [Invalid user input]]")
             print("-----------------------------------------------------")
             print("The minimum distance is 1 kilometers.")
         elif distance > 250:
-            print("~~Error [Too great of a distance],")
+            print("[~~Error, [Invalid user input]]")
             print("-----------------------------------------------------")
             print("The maximum distance is 250 kilometers.")
         elif distance < 251:
@@ -108,10 +107,7 @@ def trip_overview(trip_price, distance, package):
             return
         else:
             print("-----------------------------------------------------")
-            print("~~Error [Invalid user input],")
+            print("[~~Error, [Invalid user input]]")
             print("-----------------------------------------------------")
 
 main()
-
-# TODO Improve user experience. --> make all error messages consistent.
-# TODO Add comments to code + improve visualization.
